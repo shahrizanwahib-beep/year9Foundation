@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pusat Pembelajaran Bahasa Melayu - Kelas Asas Year 9</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background: #fdf2f8; /* bg-rose-50 */
+            overflow-x: hidden;
+        }
+        h1, h2, h3, .font-poppins {
+            font-family: 'Poppins', sans-serif;
+        }
+        .page { display: none; width: 100%; min-height: 100vh; }
+        .page.active { display: flex; }
+        .hub-card {
+            transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+        }
+        .hub-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 10px 20px -5px rgba(0,0,0,0.1);
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in {
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+        
+        /* Styles for Introduction Slides */
+        .intro-body {
+            font-family: 'Inter', sans-serif;
+            overflow: hidden;
+        }
+        .slide-content {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        @keyframes fadeInSlide {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        .presentation-container {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .bg-batik {
+            background-color: #fffbeb;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23d97706' fill-opacity='0.1'%3E%3Cpath opacity='.5' d='M96 95h4v1h-4v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4H0v-1h4v-9H0v-1h4v-9H0v-1h4v-9H0v-1h4v-9H0v-1h4v-9H0v-1h4v-9H0v-1h4v-9H0v-1h4V0h1v4h9V0h1v4h9V0h1v4h9V0h1v4h9V0h1v4h9V0h1v4h9V0h1v4h9V0h1v4h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9zm-1 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9H5v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9H5v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9H5v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9H5v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9z'/%3E%3Cpath d='M6 5V0H5v5H0v1h5v94h1V6h94V5H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        .bg-gradient-sky {
+            background-color: #f0f9ff;
+            background-image: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+        }
+        .option-btn {
+            transition: all 0.2s ease-in-out;
+        }
+        .option-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        /* Styles for Cuaca Slides */
+        .cuaca-slide { display: none; animation: fadeInCuaca 0.5s; width:100%; height: 100%;}
+        .active-cuaca-slide { display: flex; }
+        @keyframes fadeInCuaca {
+          from { opacity: 0; transform: scale(0.98); }
+          to { opacity: 1; transform: scale(1); }
+        }
+        .feedback { display: none; padding: 8px 12px; border-radius: 6px; font-weight: 500; margin-top: 12px; }
+        .feedback.correct { background-color: #dcfce7; color: #166534; display: block; }
+        .feedback.incorrect { background-color: #fee2e2; color: #991b1b; display: block; }
+        .feedback.correct::before { content: "✅ "; }
+        .feedback.incorrect::before { content: "❌ "; }
+        .objective-tag {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background-color: rgba(0, 0, 0, 0.6);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Halaman Indeks Kelas Bahasa Melayu Year 9 -->
+    <div id="foundation-bm-year9-page" class="page active flex-col items-center justify-center p-6">
+        <div class="text-center fade-in">
+            <div class="w-24 h-24 mx-auto bg-rose-500 rounded-full flex items-center justify-center shadow-lg mb-6">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6-2.292m0 0v14.25" />
+                </svg>
+            </div>
+            <h1 class="text-5xl font-extrabold text-gray-800 font-poppins">Pusat Pembelajaran Bahasa Melayu</h1>
+            <p class="text-gray-500 mt-3 text-lg bg-gray-200 inline-block px-3 py-1 rounded-full">Kelas Asas Year 9 (Foundation)</p>
+            <p class="text-gray-600 mt-6 text-xl font-medium">Dibawakan oleh: <span class="font-bold text-rose-600">Cikgu Shahrizan</span></p>
+        </div>
+        
+        <div class="mt-10 w-full max-w-lg space-y-5">
+             <button data-target="introduction-page" class="hub-card fade-in w-full text-left p-5 bg-white rounded-xl shadow-md flex items-center space-x-4" style="animation-delay: 0s;">
+                <div class="flex-shrink-0 h-14 w-14 rounded-lg flex items-center justify-center bg-yellow-100 text-yellow-600">
+                     <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" /><path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                </div>
+                <div>
+                    <span class="text-sm font-semibold text-yellow-500">Topik 0</span>
+                    <p class="font-bold text-gray-800 text-xl font-poppins">Sesi Pengenalan</p>
+                </div>
+            </button>
+            <button data-target="cuaca-page" class="hub-card fade-in w-full text-left p-5 bg-white rounded-xl shadow-md flex items-center space-x-4" style="animation-delay: 0.1s;">
+                <div class="flex-shrink-0 h-14 w-14 rounded-lg flex items-center justify-center bg-blue-100 text-blue-600">
+                     <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" /></svg>
+                </div>
+                <div>
+                    <span class="text-sm font-semibold text-blue-500">Topik 1</span>
+                    <p class="font-bold text-gray-800 text-xl font-poppins">Cuaca dan Iklim</p>
+                </div>
+            </button>
+        </div>
+    </div>
+
+    <!-- Container untuk alatan interaktif Kelas Asas -->
+    <div id="introduction-page" class="page"></div>
+    <div id="cuaca-page" class="page"></div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, onAuthStateChanged, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        
+        const pages = document.querySelectorAll('.page');
+        window.showPage = (pageId) => {
+            pages.forEach(page => page.classList.toggle('active', page.id === pageId));
+            if (window.initTools && window.initTools[pageId] && !document.getElementById(pageId).dataset.initialized) {
+                window.initTools[pageId]();
+                document.getElementById(pageId).dataset.initialized = 'true';
+            }
+        };
+
+        document.body.addEventListener('click', (e) => {
+            const target = e.target.closest('[data-target]');
+            if (target) {
+                e.preventDefault();
+                const pageId = target.dataset.target;
+                showPage(pageId);
+            }
+        });
+        
+        window.initTools = {};
+        
+        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : { apiKey: "DEMO-KEY", authDomain: "DEMO-DOMAIN", projectId: "DEMO-PROJECT" };
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+
+        onAuthStateChanged(auth, (user) => {
+            if (!user) {
+                const token = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
+                if (token) signInWithCustomToken(auth, token).catch(err => signInAnonymously(auth));
+                else signInAnonymously(auth);
+            }
+        });
+
+        // --- ALATAN UNTUK TOPIK 0: PENGENALAN ---
+        window.initTools['introduction-page'] = () => {
+            const container = document.getElementById('introduction-page');
+            container.classList.add('p-0', 'intro-body', 'bg-black', 'items-center', 'justify-center');
+            container.innerHTML = `
+                <div class="presentation-container bg-white overflow-hidden rounded-xl shadow-2xl">
+                    <div id="presentation-view-intro" class="flex-grow p-8 md:p-16 flex items-center justify-center overflow-y-auto transition-colors duration-500">
+                        <!-- Slides will be dynamically inserted here -->
+                    </div>
+                    <div class="bg-gray-100 border-t border-gray-200 px-8 py-4 flex items-center justify-between flex-shrink-0">
+                        <button id="prev-btn-intro" class="px-6 py-3 bg-gray-300 text-gray-800 text-lg font-semibold rounded-lg shadow-md hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-75 disabled:opacity-50 disabled:cursor-not-allowed transition-colors">
+                            Sebelum
+                        </button>
+                        <div class="flex items-center gap-4">
+                            <div id="slide-counter-intro" class="text-lg font-medium text-gray-600"></div>
+                             <button data-target="foundation-bm-year9-page" class="px-5 py-2 bg-rose-100 text-rose-800 font-semibold rounded-lg shadow-sm hover:bg-rose-200">Hub Utama</button>
+                        </div>
+                        <button id="next-btn-intro" class="px-6 py-3 bg-blue-600 text-white text-lg font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-75 disabled:opacity-50 disabled:cursor-not-allowed transition-colors">
+                            Seterusnya
+                        </button>
+                    </div>
+                </div>`;
+            
+            const slides = [
+                { title: "Muka Depan", content: `<div class="text-center w-full"><p class="text-3xl md:text-4xl font-semibold text-gray-600">Selamat Datang ke</p><h1 class="text-6xl md:text-7xl font-poppins font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 to-red-600">Kelas Bahasa Melayu</h1><p class="mt-4 text-2xl md:text-3xl font-semibold text-gray-500">Year 9 Foundation</p></div>`},
+                { title: "Kenali Guru Anda", content: `<div class="w-full text-center"><h2 class="text-5xl font-bold text-gray-800">Kenali Guru Anda</h2><div class="mt-8 text-9xl">👨‍🏫</div><p class="mt-6 text-4xl font-bold text-gray-700">Shahrizan Wahib</p><p class="mt-4 text-2xl text-gray-500">Fakta Menarik: Saya pernah bekerja sebagai wartawan.</p></div>`},
+                { title: "Jom Fikirkan!", content: `<div class="text-center w-full"><h2 class="text-6xl font-bold text-gray-800">Jom Fikirkan! 🤔</h2><p class="mt-6 text-3xl text-gray-600">Mari kita bincangkan beberapa situasi untuk mewujudkan suasana kelas yang terbaik.</p></div>`},
+                { title: "Situasi 1: Ketepatan Masa", type: 'interactive-quiz', question: "Ali tiba 10 minit lewat ke kelas. Apakah tindakan yang paling sesuai untuk Ali lakukan?", options: ["Masuk ke kelas secara senyap dan terus duduk.", "Memberi salam kepada guru, mohon maaf, dan jelaskan sebab kelewatan.", "Menunggu di luar sehingga kelas tamat."], correctIndex: 1, explanation: "Betul! Ini menunjukkan rasa hormat kepada guru dan rakan-rakan serta tidak mengganggu sesi pembelajaran."},
+                { title: "Situasi 2: Kerja Rumah", type: 'interactive-quiz', question: "Siti tidak faham cara untuk menyiapkan kerja rumah yang diberikan. Apakah tindakan terbaik Siti?", options: ["Tidak membuat kerja rumah langsung.", "Bertanya kepada guru untuk penjelasan lanjut sebelum atau selepas kelas.", "Meniru jawapan kawan semasa di dalam kelas."], correctIndex: 1, explanation: "Tindakan terbaik! Guru sentiasa bersedia membantu. Jangan takut untuk bertanya."},
+                { title: "Situasi 3: Penggunaan Gajet", type: 'interactive-quiz', question: "Guru sedang mengajar, tetapi anda mendapat notifikasi permainan di iPad. Apa yang anda patut buat?", options: ["Abaikan notifikasi dan terus fokus pada pelajaran.", "Buka permainan itu sekejap sahaja tanpa pengetahuan guru.", "Meminta izin guru untuk memeriksa notifikasi tersebut."], correctIndex: 0, explanation: "Bagus! Menumpukan perhatian sepenuhnya semasa guru mengajar adalah kunci untuk memahami pelajaran dengan baik."},
+                { title: "Rumusan Peraturan Kelas", content: `<div class="w-full"><h2 class="text-5xl font-bold text-gray-800 mb-8 text-center">Peraturan Kelas Kita 📜</h2><ul class="list-disc list-inside space-y-4 text-2xl text-gray-700 max-w-4xl mx-auto"><li>Hormati masa: <strong>Datang ke kelas tepat pada waktunya.</strong></li><li>Bertanggungjawab: <strong>Siapkan tugasan yang diberi</strong> dan jangan takut untuk bertanya jika tidak faham.</li><li>Beri tumpuan: <strong>Fokus semasa sesi pembelajaran</strong> dan elakkan gangguan seperti gajet.</li><li>Saling menghormati: Wujudkan suasana pembelajaran yang <strong>positif dan menyokong.</strong></li></ul></div>`},
+                { title: "Aktiviti Suai Kenal", content: `<div class="w-full"><h2 class="text-5xl font-bold text-gray-800 text-center">Jom Berkenalan!</h2><p class="mt-6 text-2xl text-gray-600 text-center"><strong>Arahan:</strong> Sila kongsikan perkara berikut:</p><ul class="mt-4 list-none text-2xl text-gray-700 w-full max-w-3xl mx-auto text-center space-y-2"><li><strong>Nama Penuh</strong></li><li><strong>Hobi</strong></li><li><strong>Makanan Kegemaran</strong></li><li><strong>Cita-cita Anda</strong></li></ul><div class="mt-8 bg-gray-100 p-6 rounded-lg text-left w-full max-w-3xl mx-auto"><p class="font-semibold text-2xl">Contoh:</p><p class="italic text-2xl mt-2">"Nama saya Aiman. Hobi saya bermain badminton, makanan kegemaran saya ialah nasi ayam, dan cita-cita saya adalah untuk menjadi seorang juruterbang."</p></div></div>`},
+                { title: "Apa yang akan kita belajar?", content: `<div class="w-full"><h2 class="text-5xl font-bold text-gray-800 text-center">Apa yang akan kita pelajari?</h2><div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8 text-center"><div class="bg-white/70 backdrop-blur-sm p-8 rounded-lg"><h3 class="text-3xl font-bold text-blue-800">Kemahiran Bertutur</h3><p class="mt-2 text-2xl text-gray-700">Perbualan, main peranan, dan pembentangan.</p></div><div class="bg-white/70 backdrop-blur-sm p-8 rounded-lg"><h3 class="text-3xl font-bold text-green-800">Kemahiran Menulis</h3><p class="mt-2 text-2xl text-gray-700">Membina ayat, menulis karangan, dan e-mel.</p></div><div class="bg-white/70 backdrop-blur-sm p-8 rounded-lg"><h3 class="text-3xl font-bold text-purple-800">Kemahiran Mendengar</h3><p class="mt-2 text-2xl text-gray-700">Audio, video, dan perbincangan.</p></div><div class="bg-white/70 backdrop-blur-sm p-8 rounded-lg"><h3 class="text-3xl font-bold text-red-800">Kemahiran Membaca</h3><p class="mt-2 text-2xl text-gray-700">Petikan, artikel, dan sastera.</p></div></div></div>`},
+                { title: "Aktiviti: Pohon Harapan", content: `<div class="w-full text-center"><h2 class="text-5xl font-bold text-gray-800">Aktiviti: Pohon Harapan 🌳</h2><p class="mt-6 text-2xl text-gray-600">Tuliskan <strong>satu harapan</strong> anda untuk kelas Bahasa Melayu pada sekeping kertas kecil (daun harapan 🍃).</p><p class="mt-4 text-2xl text-gray-600">Nanti, kita akan 'lekatkan' daun-daun ini pada 'Pohon Harapan' di dalam kelas kita!</p></div>`},
+                { title: "Kuiz Peribahasa", content: `<div class="w-full text-center"><h2 class="text-5xl font-bold text-gray-800">Jom Uji Minda! 🤔</h2><p class="mt-6 text-3xl text-gray-700">Apakah maksud peribahasa di bawah?</p><p class="my-4 text-4xl font-semibold text-blue-700 italic">"Bagai aur dengan tebing"</p><div id="quiz-options" class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4 max-w-4xl mx-auto"><button class="quiz-option p-4 text-2xl border-2 border-gray-300 rounded-lg hover:bg-gray-100">A) Hubungan yang sangat rapat dan saling membantu.</button><button class="quiz-option p-4 text-2xl border-2 border-gray-300 rounded-lg hover:bg-gray-100">B) Seseorang yang lurus bendul.</button><button class="quiz-option p-4 text-2xl border-2 border-gray-300 rounded-lg hover:bg-gray-100">C) Orang yang suka mencari gaduh.</button><button class="quiz-option p-4 text-2xl border-2 border-gray-300 rounded-lg hover:bg-gray-100">D) Melakukan kerja yang sia-sia.</button></div><div id="quiz-answer" class="mt-8 p-6 bg-green-100 border-l-4 border-green-500 text-green-800 text-2xl rounded-lg text-left max-w-4xl mx-auto hidden"><strong>Jawapan: A</strong><br>Peribahasa ini bermaksud hubungan yang sangat akrab dan saling tolong-menolong antara satu sama lain.</div><button id="show-answer-btn" class="mt-8 px-8 py-4 bg-yellow-500 text-white text-2xl font-bold rounded-lg shadow-md hover:bg-yellow-600">Tunjuk Jawapan</button></div>`},
+                { title: "Penutup", content: `<div class="text-center w-full"><h1 class="text-6xl md:text-7xl font-poppins font-extrabold text-gray-800">Selamat Maju Jaya!</h1><p class="mt-6 text-3xl text-gray-600">Mari kita jadikan kelas ini menyeronokkan!</p></div>`}
+            ];
+
+            let currentSlide = 0;
+            const presentationView = container.querySelector('#presentation-view-intro');
+            const prevBtn = container.querySelector('#prev-btn-intro');
+            const nextBtn = container.querySelector('#next-btn-intro');
+            const slideCounter = container.querySelector('#slide-counter-intro');
+            
+            function showSlide(index) {
+                const slide = slides[index];
+                const backgroundClasses = ['bg-batik', 'bg-gradient-sky'];
+                presentationView.classList.remove(...backgroundClasses);
+                presentationView.classList.add(index % 2 === 0 ? 'bg-batik' : 'bg-gradient-sky');
+
+                if (slide.type === 'interactive-quiz') {
+                    let optionsHtml = slide.options.map((option, i) => `<button data-index="${i}" class="option-btn p-4 text-2xl text-left border-2 border-gray-300 rounded-lg hover:bg-gray-100">${String.fromCharCode(65 + i)}) ${option}</button>`).join('');
+                    presentationView.innerHTML = `<div class="slide-content w-full text-center"><h2 class="text-5xl font-bold text-gray-800">${slide.title}</h2><p class="mt-6 text-3xl text-gray-700 max-w-4xl mx-auto">${slide.question}</p><div class="mt-8 grid grid-cols-1 gap-4 max-w-4xl mx-auto">${optionsHtml}</div><div class="interactive-feedback mt-8 p-6 bg-green-100 border-l-4 border-green-500 text-green-800 text-2xl rounded-lg text-left max-w-4xl mx-auto hidden">${slide.explanation}</div></div>`;
+                    addInteractiveQuizListeners(slide);
+                } else {
+                     presentationView.innerHTML = `<div class="slide-content w-full">${slide.content}</div>`;
+                }
+                
+                if (slide.title === "Kuiz Peribahasa") {
+                    const showAnswerBtn = container.querySelector('#show-answer-btn');
+                    const quizAnswer = container.querySelector('#quiz-answer');
+                    const quizOptions = container.querySelectorAll('.quiz-option');
+                    showAnswerBtn.addEventListener('click', () => {
+                        quizAnswer.classList.remove('hidden');
+                        showAnswerBtn.style.display = 'none';
+                        quizOptions.forEach((option, idx) => {
+                           if (idx === 0) option.classList.add('bg-green-200', 'border-green-500');
+                           else option.classList.add('opacity-50');
+                           option.disabled = true;
+                        });
+                    });
+                }
+                slideCounter.textContent = `Slaid ${index + 1} / ${slides.length}`;
+                prevBtn.disabled = index === 0;
+                nextBtn.disabled = index === slides.length - 1;
+            }
+
+            function addInteractiveQuizListeners(slide) {
+                const optionButtons = container.querySelectorAll('.option-btn');
+                const feedbackDiv = container.querySelector('.interactive-feedback');
+                optionButtons.forEach(button => {
+                    button.addEventListener('click', () => {
+                        const selectedIndex = parseInt(button.dataset.index);
+                        optionButtons.forEach((btn, i) => {
+                            btn.disabled = true;
+                            if (i === slide.correctIndex) btn.classList.add('bg-green-200', 'border-green-500');
+                            else if (i === selectedIndex) btn.classList.add('bg-red-200', 'border-red-500', 'opacity-70');
+                            else btn.classList.add('opacity-50');
+                        });
+                        feedbackDiv.classList.remove('hidden');
+                    });
+                });
+            }
+
+            nextBtn.addEventListener('click', () => { if (currentSlide < slides.length - 1) { currentSlide++; showSlide(currentSlide); } });
+            prevBtn.addEventListener('click', () => { if (currentSlide > 0) { currentSlide--; showSlide(currentSlide); } });
+            
+            document.addEventListener('keydown', (event) => {
+                if (container.classList.contains('active')) {
+                    if (event.key === 'ArrowRight' && !nextBtn.disabled) nextBtn.click();
+                    else if (event.key === 'ArrowLeft' && !prevBtn.disabled) prevBtn.click();
+                }
+            });
+            showSlide(currentSlide);
+        };
+        
+        // --- ALATAN UNTUK TOPIK 1: CUACA ---
+        window.initTools['cuaca-page'] = () => {
+            const container = document.getElementById('cuaca-page');
+            container.classList.add('bg-gray-100', 'w-full', 'h-screen', 'flex', 'flex-col', 'items-center', 'justify-center');
+            container.innerHTML = `
+                <div id="app-cuaca" class="w-full h-full bg-white shadow-2xl flex flex-col relative overflow-hidden"></div>
+                <nav class="w-full bg-gray-800 text-white p-3 flex justify-between items-center flex-shrink-0">
+                    <button id="prev-cuaca" class="px-5 py-2 bg-gray-600 rounded-md hover:bg-gray-500 disabled:opacity-50 disabled:cursor-not-allowed">‹ Sebelumnya</button>
+                    <div class="flex items-center gap-4">
+                        <button data-target="foundation-bm-year9-page" class="px-5 py-2 bg-rose-500 text-white font-semibold rounded-lg shadow-sm hover:bg-rose-600">Hub Utama</button>
+                        <span id="slide-count-cuaca" class="text-lg font-semibold"></span>
+                    </div>
+                    <button id="next-cuaca" class="px-5 py-2 bg-blue-600 rounded-md hover:bg-blue-500 disabled:opacity-50 disabled:cursor-not-allowed">Seterusnya ›</button>
+                </nav>
+            `;
+
+            const app = container.querySelector('#app-cuaca');
+            const prevButton = container.querySelector('#prev-cuaca');
+            const nextButton = container.querySelector('#next-cuaca');
+            const slideCount = container.querySelector('#slide-count-cuaca');
+
+            let currentSlide = 0;
+            let score = 0;
+            const slides = [
+                { objective: "Memulakan perbincangan", content: `<div class="flex flex-col items-center justify-center h-full text-center bg-blue-50 p-8"><h1 class="text-6xl font-bold text-blue-800">Selamat Datang!</h1><p class="mt-4 text-3xl text-blue-600">Hari ini kita akan belajar tentang <strong>Cuaca dan Iklim</strong>.</p><p class="mt-8 text-2xl"> Cuba lihat ke luar tingkap. Apakah cuaca hari ini?</p></div>` },
+                { objective: "Menetapkan matlamat", content: `<div class="w-full p-10 bg-gray-50"><h2 class="text-4xl font-bold text-gray-800 mb-6">Objektif Pembelajaran 🎯</h2><ul class="list-disc list-inside text-2xl space-y-4 text-gray-700"><li>Mengenal pasti 5 perkataan berkaitan cuaca.</li><li>Membina ayat mudah menggunakan perkataan yang dipelajari.</li><li>Memadankan gambar dengan deskripsi cuaca yang betul.</li></ul></div>` },
+                { objective: "Kosa Kata: Cerah", content: `<div class="grid grid-cols-2 gap-6 items-center h-full p-10 bg-yellow-50"><div class="text-center"><p class="text-9xl">☀️</p></div><div><h3 class="text-5xl font-bold text-yellow-800">Cerah</h3><p class="mt-4 text-2xl text-gray-600">Apabila matahari bersinar terang dan tiada awan.</p><p class="mt-4 text-xl italic bg-white p-3 rounded-md shadow">Contoh: "Hari ini cuaca sangat <strong>cerah</strong>."</p></div></div>` },
+                { objective: "Kosa Kata: Hujan", content: `<div class="grid grid-cols-2 gap-6 items-center h-full p-10 bg-blue-100"><div class="text-center"><p class="text-9xl">🌧️</p></div><div><h3 class="text-5xl font-bold text-blue-800">Hujan</h3><p class="mt-4 text-2xl text-gray-600">Apabila air turun dari langit.</p><p class="mt-4 text-xl italic bg-white p-3 rounded-md shadow">Contoh: "Jangan lupa bawa payung, hari hendak <strong>hujan</strong>."</p></div></div>` },
+                { objective: "Kosa Kata: Mendung", content: `<div class="grid grid-cols-2 gap-6 items-center h-full p-10 bg-gray-200"><div class="text-center"><p class="text-9xl">☁️</p></div><div><h3 class="text-5xl font-bold text-gray-800">Mendung</h3><p class="mt-4 text-2xl text-gray-600">Apabila langit diliputi awan kelabu dan matahari tidak kelihatan.</p><p class="mt-4 text-xl italic bg-white p-3 rounded-md shadow">Contoh: "Langit kelihatan <strong>mendung</strong>, mungkin akan hujan."</p></div></div>` },
+                { objective: "Kosa Kata: Berangin", content: `<div class="grid grid-cols-2 gap-6 items-center h-full p-10 bg-green-50"><div class="text-center"><p class="text-9xl">💨</p></div><div><h3 class="text-5xl font-bold text-green-800">Berangin</h3><p class="mt-4 text-2xl text-gray-600">Apabila angin bertiup dengan kuat.</p><p class="mt-4 text-xl italic bg-white p-3 rounded-md shadow">Contoh: "Cuaca di tepi pantai selalunya <strong>berangin</strong>."</p></div></div>` },
+                { objective: "Kosa Kata: Ribut Petir", content: `<div class="grid grid-cols-2 gap-6 items-center h-full p-10 bg-indigo-100"><div class="text-center"><p class="text-9xl">⛈️</p></div><div><h3 class="text-5xl font-bold text-indigo-800">Ribut Petir</h3><p class="mt-4 text-2xl text-gray-600">Hujan lebat yang disertai dengan guruh dan kilat.</p><p class="mt-4 text-xl italic bg-white p-3 rounded-md shadow">Contoh: "Saya takut apabila ada <strong>ribut petir</strong>."</p></div></div>` },
+                { objective: "Aktiviti 1: Padankan", content: `<div class="w-full p-10"><h2 class="text-3xl font-bold text-center mb-6">Aktiviti 1: Jom Padankan!</h2><p class="text-center text-xl mb-6">Pilih perkataan yang betul untuk setiap gambar.</p><div class="flex items-center justify-around"><p class="text-8xl">☀️</p><div><div id="choices-8" class="flex flex-col gap-3 text-xl">${['Hujan', 'Cerah', 'Mendung'].map(o => `<button onclick="checkAnswerCuaca(8, '${o}')" class="px-6 py-2 bg-gray-200 rounded-md hover:bg-gray-300">${o}</button>`).join('')}</div><div id="feedback-8" class="feedback"></div></div></div></div>` },
+                { objective: "Aktiviti 1: Padankan", content: `<div class="w-full p-10"><h2 class="text-3xl font-bold text-center mb-6">Aktiviti 1: Jom Padankan!</h2><p class="text-center text-xl mb-6">Pilih perkataan yang betul untuk setiap gambar.</p><div class="flex items-center justify-around"><p class="text-8xl">💨</p><div><div id="choices-9" class="flex flex-col gap-3 text-xl">${['Berangin', 'Ribut Petir', 'Cerah'].map(o => `<button onclick="checkAnswerCuaca(9, '${o}')" class="px-6 py-2 bg-gray-200 rounded-md hover:bg-gray-300">${o}</button>`).join('')}</div><div id="feedback-9" class="feedback"></div></div></div></div>` },
+                { objective: "Aktiviti 2: Isi Tempat Kosong", content: `<div class="w-full p-10"><h2 class="text-3xl font-bold text-center mb-6">Aktiviti 2: Isi Tempat Kosong</h2><p class="text-center text-xl mb-6">Pilih jawapan yang paling sesuai.</p><p class="text-2xl text-center">Apabila langit kelabu, cuaca ________.</p><div id="choices-10" class="flex justify-center gap-4 mt-4 text-xl">${['cerah', 'mendung', 'panas'].map(o => `<button onclick="checkAnswerCuaca(10, '${o}')" class="px-6 py-2 bg-blue-200 rounded-md hover:bg-blue-300">${o}</button>`).join('')}</div><div id="feedback-10" class="feedback mx-auto max-w-md"></div></div>` },
+                { objective: "Aktiviti 2: Isi Tempat Kosong", content: `<div class="w-full p-10"><h2 class="text-3xl font-bold text-center mb-6">Aktiviti 2: Isi Tempat Kosong</h2><p class="text-center text-xl mb-6">Pilih jawapan yang paling sesuai.</p><p class="text-2xl text-center">Kita menggunakan payung semasa hari ________.</p><div id="choices-11" class="flex justify-center gap-4 mt-4 text-xl">${['berangin', 'hujan', 'mendung'].map(o => `<button onclick="checkAnswerCuaca(11, '${o}')" class="px-6 py-2 bg-blue-200 rounded-md hover:bg-blue-300">${o}</button>`).join('')}</div><div id="feedback-11" class="feedback mx-auto max-w-md"></div></div>` },
+                { objective: "Perbezaan Cuaca & Iklim", content: `<div class="w-full p-10 bg-teal-50"><h2 class="text-4xl font-bold text-teal-800 text-center mb-6">Cuaca vs Iklim</h2><div class="grid grid-cols-2 gap-8 text-xl"><div><h3 class="text-2xl font-semibold border-b-2 border-teal-500 pb-2">Cuaca</h3><p class="mt-2">Keadaan atmosfera di sesuatu tempat pada <strong>jangka masa yang singkat</strong> (jam, hari).</p><p class="mt-2 italic">Contoh: "Cuaca di Johor Bahru hari ini hujan."</p></div><div><h3 class="text-2xl font-semibold border-b-2 border-teal-500 pb-2">Iklim</h3><p class="mt-2">Corak cuaca di sesuatu kawasan untuk <strong>jangka masa yang panjang</strong> (bertahun-tahun).</p><p class="mt-2 italic">Contoh: "Malaysia mempunyai <strong>iklim</strong> tropika."</p></div></div></div>` },
+                { objective: "Aktiviti 3: Betul atau Salah?", content: `<div class="w-full p-10"><h2 class="text-3xl font-bold text-center mb-6">Aktiviti 3: Betul atau Salah?</h2><p class="text-2xl text-center mb-6">"Iklim di London hari ini sejuk."</p><div id="choices-13" class="flex justify-center gap-4 mt-4 text-xl">${['Betul', 'Salah'].map(o => `<button onclick="checkAnswerCuaca(13, '${o}')" class="px-6 py-2 bg-green-200 rounded-md hover:bg-green-300">${o}</button>`).join('')}</div><div id="feedback-13" class="feedback mx-auto max-w-lg"></div></div>` },
+                { objective: "Aktiviti 4: Susun Perkataan", content: `<div class="w-full p-10"><h2 class="text-3xl font-bold text-center mb-6">Aktiviti 4: Susun Perkataan</h2><p class="text-center text-xl mb-6">Susun perkataan di bawah menjadi ayat yang betul.</p><div class="text-center text-2xl font-semibold bg-gray-100 p-4 rounded-md">sangat / hari / panas / ini / cuaca</div><div class="mt-4 text-center"><button id="choices-14" onclick="checkAnswerCuaca(14, '')" class="px-6 py-2 bg-yellow-400 rounded-md hover:bg-yellow-500">Tunjukkan Jawapan</button></div><div id="feedback-14" class="feedback mx-auto max-w-md"></div></div>` },
+                { objective: "Rumusan", content: `<div class="w-full p-10 bg-gray-50"><h2 class="text-4xl font-bold text-gray-800 mb-6">Rumusan Hari Ini 📝</h2><ul class="list-disc list-inside text-2xl space-y-4 text-gray-700"><li>Kita telah belajar 5 jenis cuaca: <strong>cerah, hujan, mendung, berangin, ribut petir</strong>.</li><li><strong>Cuaca</strong> ialah keadaan jangka pendek, manakala <strong>iklim</strong> ialah corak jangka panjang.</li><li>Kita boleh membina ayat mudah untuk menerangkan keadaan cuaca.</li></ul></div>` },
+                { objective: "Aktiviti Tambahan", content: `<div class="w-full p-10 text-center"><h2 class="text-3xl font-bold mb-4">Aktiviti Tambahan</h2><p class="text-xl">Lukis gambar cuaca kegemaran anda dan tulis satu ayat mengenainya.</p><div class="text-8xl mt-6">🎨✍️</div></div>` }
+            ];
+
+            function renderSlides() {
+                app.innerHTML = slides.map((slide, index) => `
+                    <div id="cuaca-slide-${index}" class="cuaca-slide absolute inset-0 items-center justify-center">
+                        <div class="objective-tag">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 1.414L10.586 9H7a1 1 0 100 2h3.586l-1.293 1.293a1 1 0 101.414 1.414l3-3a1 1 0 000-1.414z" clip-rule="evenodd" /></svg>
+                            <span>${slide.objective}</span>
+                        </div>
+                        ${slide.content}
+                    </div>
+                `).join('');
+            }
+
+            function showSlide(index) {
+                const allSlides = container.querySelectorAll('.cuaca-slide');
+                allSlides.forEach(s => s.classList.remove('active-cuaca-slide'));
+                const newSlide = container.querySelector(`#cuaca-slide-${index}`);
+                if (newSlide) {
+                    newSlide.classList.add('active-cuaca-slide');
+                }
+                slideCount.textContent = `${index + 1} / ${slides.length}`;
+                prevButton.disabled = index === 0;
+                nextButton.disabled = index === slides.length - 1;
+            }
+
+            window.checkAnswerCuaca = (slideNumber, answer) => {
+              let isCorrect = false;
+              let correctAnswerText = '';
+              const feedback = container.querySelector(`#feedback-${slideNumber}`);
+
+              switch (slideNumber) {
+                case 8: isCorrect = answer === 'Cerah'; correctAnswerText = 'Jawapan yang betul ialah "Cerah".'; break;
+                case 9: isCorrect = answer === 'Berangin'; correctAnswerText = 'Jawapan yang betul ialah "Berangin".'; break;
+                case 10: isCorrect = answer === 'mendung'; correctAnswerText = 'Jawapan yang betul ialah "mendung".'; break;
+                case 11: isCorrect = answer === 'hujan'; correctAnswerText = 'Jawapan yang betul ialah "hujan".'; break;
+                case 13: isCorrect = answer === 'Salah'; correctAnswerText = 'Salah. Kenyataan ini merujuk kepada CUACA (jangka pendek), bukan IKLIM (jangka panjang).'; break;
+                case 14: feedback.textContent = 'Jawapan: "Cuaca hari ini sangat panas."'; feedback.className = 'feedback correct'; return;
+              }
+
+              const buttonContainer = container.querySelector(`#choices-${slideNumber}`);
+              if (isCorrect) {
+                  if (!buttonContainer.dataset.answered) {
+                      score++;
+                      buttonContainer.dataset.answered = true;
+                  }
+                  feedback.textContent = 'Betul! 👍';
+                  feedback.className = 'feedback correct';
+              } else {
+                  feedback.textContent = correctAnswerText;
+                  feedback.className = 'feedback incorrect';
+              }
+
+              const buttons = buttonContainer.querySelectorAll('button');
+              buttons.forEach(btn => btn.disabled = true);
+            }
+            
+            prevButton.addEventListener('click', () => {
+                if (currentSlide > 0) {
+                    currentSlide--;
+                    showSlide(currentSlide);
+                }
+            });
+
+            nextButton.addEventListener('click', () => {
+                if (currentSlide < slides.length - 1) {
+                    currentSlide++;
+                    showSlide(currentSlide);
+                }
+            });
+
+            document.addEventListener('keydown', (event) => {
+                 if (container.classList.contains('active')) {
+                    if (event.key === 'ArrowRight' && !nextButton.disabled) {
+                        nextButton.click();
+                    } else if (event.key === 'ArrowLeft' && !prevButton.disabled) {
+                        prevButton.click();
+                    }
+                }
+            });
+
+            renderSlides();
+            showSlide(currentSlide);
+        };
+        
+    </script>
+</body>
+</html>
+
